@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<style type="text/css">
+
+    body {
+                background-color: #f1f1f1;
+                margin: 0;
+            }
+	* {
+   			    box-sizing: border-box;
+		    }
+			/* Style the header */
+	.header {
+                background-color: #f1f1f1;
+                padding: 20px;
+                text-align: center;
+			}
+
+			/* Style the top navigation bar */
+	.topnav {
+				position: -webkit-sticky;
+			  	position: sticky;
+			  	top: 0;
+    			overflow: hidden;
+    			background-color: #333;
+			}
+
+            /* Style the topnav links */
+    .topnav a {
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            /* Change color on hover */
+    .topnav a:hover {
+    			
+                background-color: #ddd;
+                color: black;
+            }
+	
+
+	.column {
+                float: left;
+                width: 33.33%;
+                padding: 15px;
+            }
+
+    /* Clear floats after the columns */
+    .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+     /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media (max-width:600px) {
+        .column {
+                    width: 100%;
+                }       
+            }
+	
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<div class="header">
+  		<h1>Find My Lost</h1>
+	</div>
+
+	<div class="topnav">
+        <a href="#">หน้าหลัก</a>
+        <a href="#">ค้นหาของ</a>
+        <a href="#">แจ้งของหาย</a>
+        <a href="#">แจ้งหาเจ้าของ</a>
+        <a href="#">คำถามที่พบบ่อย</a>
+        <a href="#">เกี่ยวกับเรา</a>
+        <topnav style="float:right"><a href="#">สมัครสมาชิก</a>
+        <topnav style="float:right"><a href="#">เข้าสู่ระบบ</a>
+    </div>
+</head>
+<body>
+    <div class="row">
+        <div class="column">
+            <h2>อันดับประเทศของที่หายมากที่สุด</h2>
+                <p>- กระเป๋าสตางค์</p>
+            </div>
+        <div class="column">
+            <h2>ของที่หายในเดือนธันวาคม</h2>
+                <p>- เม้าเกมส์มิ่ง</p>
+            </div>
+        <div class="column">
+            <h2>อันดับอาคารที่มีของหายมากที่สุด</h2>
+                <p>- อาคารวิศวะวัฒนะ</p>
+            </div>
+        </div>
+</body>
+</html> 
