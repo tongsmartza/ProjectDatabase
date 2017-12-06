@@ -21,13 +21,14 @@
 	$id = mysqli_real_escape_string($con, $_POST['StudentID']);
 	$name= mysqli_real_escape_string($con, $_POST['FirstName']);
 	$lastname= mysqli_real_escape_string($con, $_POST['LastName']);
-	$facalty= mysqli_real_escape_string($con, $_POST['Facalty']);
 	$department= mysqli_real_escape_string($con, $_POST['DepartmentName']);
 	$telno = mysqli_real_escape_string($con, $_POST['Phone']);
 	$facebook = mysqli_real_escape_string($con, $_POST['Facebook']);
 	$line= mysqli_real_escape_string($con, $_POST['LineID']);
-	$sql="INSERT INTO personaldetail (id, name, lastname, facalty, department, telno, facebook, lineid)
-	VALUES ('$id','$name','$lastname','$facalty','$department','$telno','$facebook','$line')";
+	$username= mysqli_real_escape_string($con, $_POST['Username']);
+	$password= mysqli_real_escape_string($con, $_POST['Password']);
+	$sql="INSERT INTO personaldetail (StudentID, Username , Password , Firstname, Lastname, DepartmentName, Phone, Facebook, LineID)
+	VALUES ('$id','$username','$password','$name','$lastname','$department','$telno','$facebook','$line')";
 	if (!mysqli_query($con,$sql)) {
 	die('Error: ' . mysqli_error($con));
 	}
