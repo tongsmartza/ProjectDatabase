@@ -106,8 +106,6 @@ CREATE TABLE `personaldetail` (
 -- Dumping data for table `personaldetail`
 --
 
-INSERT INTO `personaldetail` (`Status`, `EmployeeID`, `StudentID`, `Firstname`, `Lastname`, `Nickname`, `Phone`, `Facebook`, `LineID`, `Password`, `DepartmentName`, `StaffTeamID`, `Username`) VALUES
-('S', '0', '58070501069', 'Sirapong', 'Phoosawan', 'Tong', '0875212861', 'Sirapong Phoosawan', 'tongsmartza', '123456', 'CPE', '789', 'tongsmartza');
 
 -- --------------------------------------------------------
 
