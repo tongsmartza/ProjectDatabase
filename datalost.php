@@ -2,7 +2,7 @@
 	header("Access-Control-Allow-Origin: *");
 	header("Content-Type: application/json; charset=UTF-8");
 
-	$conn = new mysqli("localhost","root","","project");
+	$conn = new mysqli("localhost","root","","project1");
 
 	$result = $conn->query("SELECT LostID , Username , TypeItem , Place , DateLost , Detail FROM lostdetail;");
 
