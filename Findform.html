@@ -139,6 +139,7 @@ form {
 	<br>
 	<br>
 	<br>
+	 <form action="responsefind.php" method="post">
 	<p style="text-align: center;">ประเภทของที่ทำหาย</p>
 	<div class="container">
 		<div class="col-md-4">
@@ -146,11 +147,13 @@ form {
 				<div class="dropbtn" style="float: : right;">
 			<!-- <input type="text" name="input" placeholder="Select Item"> -->
 			<div class="center">
-			    	<select style="width: 390px; height: 30px;">
+			    	<!-- <select style="width: 390px; height: 30px;">-->
+			    	<select name="losttype" style="width: 390px; height: 30px;">
 			    		<option value="Pen">ปากกา</option>
 			    		<option value="asd">ดินสอ</option>
 			    		<option value="dsa">ไม้บรรทัด</option>
 			    	</select>
+			    	
 				</div> 
 		</div>
 		</div> 
@@ -163,20 +166,23 @@ form {
 				<div class="dropbtn" style="float: : right;">
 			<!-- <input type="text" name="input" placeholder="Select Item"> -->
 			<div class="center">
-			    	<select style="width: 390px; height: 30px;">
+			    	<select name="place" style="width: 390px; height: 30px;">
 			    		<option value="Pen">อาคารวิศววัฒนะ</option>
 			    		<option value="asd">KFC</option>
 			    		<option value="dsa">อาคารเรียนรวม1</option>
 			    	</select>
 				</div> 
+
 		</div>
 		</div> 
 		</div>
 	</div>
 	<p class = "others">รายละเอียดเพิ่มเติม</p>
 	<div class="center">
-		<input style=" width: 390px; height: 150px;" class ="others" type="text" name="FirstName" value="เช่น สี รูปร่าง ลักษณะอื่นๆ">
+		<input style=" width: 390px; height: 150px;" class ="others" type="text" name="detail" value="เช่น สี รูปร่าง ลักษณะอื่นๆ">
 	<br></div>
+	<div class="center">
+	<input type="submit" value="Submit">
 </form>
 
 <div class="footer">
