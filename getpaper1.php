@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$conn = new mysqli("localhost", "root", "", "serchdetail");
+$conn = new mysqli("localhost", "root", "", "project1");
 
 $result = $conn->query("SELECT SearchID,Username,TypeSearch,DateSearch,TimeSearch,KeywordDetail FROM searchdetail;");
 
