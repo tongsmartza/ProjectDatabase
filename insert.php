@@ -3,6 +3,45 @@ Welcome <?php echo $_POST["Username"]; ?><br>
 Your Search is: <?php echo $_POST["TypeSearch"]; ?><br>
 
 Your KeywordDetail is: <?php echo $_POST["KeywordDetail"]; ?><br>
+<script>
+		loadPapers();
+
+		function loadPapers() {
+			var xmlhttp = new XMLHttpRequest();
+			var url = "http://localhost/fetchsearch.php";
+
+			xmlhttp.onreadystatechange = function() {
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					displayResponse(xmlhttp.responseText);
+				}
+			}
+			xmlhttp.open("GET",url,true);
+			xmlhttp.send();
+		}
+
+		function displayResponse(response) {
+			var array = JSON.parse(response);
+			var i;
+			var out ="<table>";
+			for(i=0;i<array.length;i++) {
+				out += 	"<tr><td>" + array[i].LostID
+					+	"</td><td>" + array[i].Username
+					+	"</td><td>" + array[i].TypeItem
+					+	"</td><td>" + array[i].Place
+					+	"</td><td>" + array[i].DateLost
+					+	"</td><td>" + array[i].Detail
+
+
+					+	"</td></tr>";
+
+			}
+			out += "</table>";
+			document.getElementById("id01").innerHTML = out;
+		}
+
+		
+		</script>
+
 </body></html>
 
 
@@ -26,4 +65,5 @@ die('Error: ' . mysqli_error($con));
 echo "1 record added";
 mysqli_close($con);
 ?>
+
 
