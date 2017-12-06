@@ -19,7 +19,7 @@
 	$outp .="]";
 
 	$conn->close();
-	echo($outp);
+	
 ?>
 
 
