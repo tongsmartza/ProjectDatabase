@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 06, 2017 at 07:37 AM
+-- Generation Time: Dec 07, 2017 at 10:59 AM
 -- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `project`
+-- Database: `project1`
 --
 
 -- --------------------------------------------------------
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `confirmdetail` (
-  `ConfirmNO` varchar(12) CHARACTER SET utf8 NOT NULL,
-  `LostID` varchar(5) NOT NULL,
-  `DateConfirm` date NOT NULL,
-  `Place` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  `ItemID` varchar(5) NOT NULL,
-  `StatusConfirm` varchar(2) CHARACTER SET utf8 NOT NULL
+  `ConfirmNO` int(12) NOT NULL,
+  `LostID` int(5) NOT NULL,
+  `DateConfirm` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ItemID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `StatusConfirm` varchar(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -44,9 +44,41 @@ CREATE TABLE `confirmdetail` (
 --
 
 CREATE TABLE `department` (
-  `DepartmentName` varchar(30) NOT NULL,
-  `Facalty` varchar(30) CHARACTER SET utf8 DEFAULT NULL
+  `DepartmentName` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Facalty` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`DepartmentName`, `Facalty`) VALUES
+('คณิตศาสตร์', 'วิทยาศาสตร์'),
+('ครุศาสตร์อุตสาหการ', 'ครุศาสตร์อุตสาหกรรมและเทคโนโลยี'),
+('ครุศาสตร์เครื่องกล', 'ครุศาสตร์อุตสาหกรรมและเทคโนโลยี'),
+('ครุศาสตร์โยธา', 'ครุศาสตร์อุตสาหกรรมและเทคโนโลยี'),
+('คอมพิวเตอร์และเทคโนโลยีสารสนเทศ', 'ครุศาสตร์อุตสาหกรรมและเทคโนโลยี'),
+('จุลชีววิทยา', 'วิทยาศาสตร์'),
+('ฟิสิกส์', 'วิทยาศาสตร์'),
+('วิทยาการคอมพิวเตอร์', 'เทคโนโลยีสารสนเทศ'),
+('วิศวกรรมคอมพิวเตอร์', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมระบบควบคุมและเครื่องมือวัด', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมสิ่งแวดล้อม', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมหุ่นยนต์และระบบอัตโนมัติ ', 'สถาบันวิทยาการหุ่นยนต์ภาคสนาม (FIBO)'),
+('วิศวกรรมอิเล็กทรอนิกส์และโทรคมนาคม', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมอุตสาหการ', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมเคมี', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมเครื่องกล', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมเครื่องมือและวัสดุ', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมเมคคาทรอนิกส์', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมโยธา', 'วิศวกรรมศาสตร์'),
+('วิศวกรรมไฟฟ้า', 'วิศวกรรมศาสตร์'),
+('สถาปัตยกรรมศาสตร์และการออกแบบ', 'สถาปัตยกรรมศาสตร์และการออกแบบ'),
+('เคมี', 'วิทยาศาสตร์'),
+('เทคโนโลยีการพิมพ์และบรรจุภัณฑ์', 'ครุศาสตร์อุตสาหกรรมและเทคโนโลยี'),
+('เทคโนโลยีสารสนเทศ', 'เทคโนโลยีสารสนเทศ'),
+('เทคโนโลยีและสื่อสารการศึกษา', 'ครุศาสตร์อุตสาหกรรมและเทคโนโลยี'),
+('โครงการร่วมบริหารหลักสูตรฯ (มีเดีย)', 'ครุศาสตร์อุตสาหกรรมและเทคโนโลยี');
 
 -- --------------------------------------------------------
 
@@ -55,15 +87,16 @@ CREATE TABLE `department` (
 --
 
 CREATE TABLE `founddetail` (
-  `ItemID` varchar(5) NOT NULL,
-  `Username` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `StaffTeamID` varchar(5) CHARACTER SET utf8 NOT NULL,
-  `StoreID` varchar(5) DEFAULT NULL,
-  `TypeItem` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  `Place` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `ItemID` int(5) NOT NULL,
+  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `StaffTeamID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `StoreID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `TypeItem` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `DateFound` date NOT NULL,
-  `DateOut` date NOT NULL,
-  `StatusItem` varchar(11) CHARACTER SET utf8 NOT NULL
+  `DateOut` date DEFAULT NULL,
+  `StatusItem` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Localfile` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -73,11 +106,13 @@ CREATE TABLE `founddetail` (
 --
 
 CREATE TABLE `lostdetail` (
-  `LostID` varchar(5) NOT NULL,
-  `Username` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `TypeItem` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `Place` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  `DateLost` date NOT NULL
+  `LostID` int(5) NOT NULL,
+  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `TypeItem` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `DateLost` date NOT NULL,
+  `Detail` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `Localfile` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,25 +122,29 @@ CREATE TABLE `lostdetail` (
 --
 
 CREATE TABLE `personaldetail` (
-  `Status` varchar(1) CHARACTER SET utf8 NOT NULL,
-  `EmployeeID` varchar(5) NOT NULL,
-  `StudentID` varchar(12) CHARACTER SET utf8 NOT NULL,
-  `Firstname` varchar(15) CHARACTER SET utf8 NOT NULL,
-  `Lastname` varchar(15) CHARACTER SET utf8 NOT NULL,
-  `Nickname` varchar(10) CHARACTER SET utf8 NOT NULL,
-  `Phone` varchar(11) CHARACTER SET utf8 NOT NULL,
-  `Facebook` varchar(30) CHARACTER SET utf8 DEFAULT NULL,
-  `LineID` varchar(18) CHARACTER SET utf8 DEFAULT NULL,
-  `Password` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `DepartmentName` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `StaffTeamID` varchar(5) NOT NULL,
-  `Username` varchar(30) CHARACTER SET utf8 NOT NULL
+  `Status` varchar(1) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `EmployeeID` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `StudentID` varchar(12) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Firstname` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Lastname` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Facebook` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `LineID` varchar(18) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
+  `Password` varchar(255) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `DepartmentName` varchar(30) CHARACTER SET utf32 COLLATE utf32_unicode_ci NOT NULL,
+  `StaffTeamID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Localfile` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `personaldetail`
 --
 
+INSERT INTO `personaldetail` (`Status`, `EmployeeID`, `StudentID`, `Firstname`, `Lastname`, `Phone`, `Facebook`, `LineID`, `Password`, `DepartmentName`, `StaffTeamID`, `Username`, `Localfile`) VALUES
+('', '', '58070501069', 'Sirapong', 'Phoosawan', '0875212861', 'Sirapong Phoosawan', '?????????', '', '????????????????????', '', '', ''),
+('', '', '98765432101', 'OPA', 'POA', '9876543210', 'Peerakit Ingon', '????????????', '1????????', '????????????????????', '', 'peerakit', ''),
+('', '', '98765432101', 'OPA', 'POA', '0812345678', 'Suky Boonkittiporn', '????????????', '7????????', '????????????????????', '', 'zasmarttong', '');
 
 -- --------------------------------------------------------
 
@@ -114,11 +153,11 @@ CREATE TABLE `personaldetail` (
 --
 
 CREATE TABLE `picdetail` (
-  `PicID` varchar(5) NOT NULL,
-  `Localfile` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `Username` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `ItemID` varchar(5) NOT NULL,
-  `LostID` varchar(5) NOT NULL
+  `PicID` int(5) NOT NULL,
+  `Localfile` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ItemID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `LostID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -128,9 +167,18 @@ CREATE TABLE `picdetail` (
 --
 
 CREATE TABLE `place` (
-  `Place` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Worktime` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `place`
+--
+
+INSERT INTO `place` (`Place`, `Worktime`) VALUES
+('CPE', '09:43:06'),
+('ชั้น10 อาคารวิศววัฒนะ', '08:00:00'),
+('ชั้น11 อาคารวิศววัฒนะ', '08:00:00');
 
 -- --------------------------------------------------------
 
@@ -139,13 +187,22 @@ CREATE TABLE `place` (
 --
 
 CREATE TABLE `searchdetail` (
-  `SearchID` varchar(5) NOT NULL,
-  `Username` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `TypeSearch` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `DateSearch` date NOT NULL,
-  `TimeSearch` time NOT NULL,
-  `KeywordDetail` varchar(30) CHARACTER SET utf8 DEFAULT NULL
+  `SearchID` int(5) NOT NULL,
+  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `TypeSearch` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `DateSearch` datetime DEFAULT CURRENT_TIMESTAMP,
+  `TimeSearch` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `KeywordDetail` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `searchdetail`
+--
+
+INSERT INTO `searchdetail` (`SearchID`, `Username`, `TypeSearch`, `DateSearch`, `TimeSearch`, `KeywordDetail`) VALUES
+(1, 'peerakit', '&#3650;&#3609;&#3658;&#3605;&#', '0000-00-00 00:00:00', '2017-12-05 17:00:00', '&#3626;&#3637;&#3604;&#3635; '),
+(2, 'peerakit', 'Notebook', '2017-12-06 19:24:49', '2017-12-06 12:24:49', 'black'),
+(4, 'peerakit', 'Notebook', '2017-12-06 21:17:10', '2017-12-06 14:17:10', 'black');
 
 -- --------------------------------------------------------
 
@@ -154,13 +211,24 @@ CREATE TABLE `searchdetail` (
 --
 
 CREATE TABLE `staffdetail` (
-  `StaffTeamID` varchar(5) NOT NULL,
-  `Position` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `WorkHour` time NOT NULL,
-  `Office` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `OfficePhone` varchar(11) NOT NULL,
-  `FBPage` varchar(30) CHARACTER SET utf8 DEFAULT NULL
+  `StaffTeamID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Position` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `WorkHour` varchar(30) NOT NULL,
+  `Office` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `OfficePhone` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `FBPage` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `staffdetail`
+--
+
+INSERT INTO `staffdetail` (`StaffTeamID`, `Position`, `WorkHour`, `Office`, `OfficePhone`, `FBPage`) VALUES
+('001', 'admin', 'Monday', 'ชั้น11 อาคารวิศววัฒนะ', '0821234567', 'sirapong'),
+('002', 'headstaff', 'Tuesday', 'ชั้น11 อาคารวิศววัฒนะ', '0821234567', ''),
+('003', 'staff', 'Wednesday', 'ชั้น10 อาคารวิศววัฒนะ', '0872341321', ''),
+('004', 'staff', 'Thursday', 'ชั้น10 อาคารวิศววัฒนะ', '0872341321', ''),
+('005', 'staff', 'Friday', 'ชั้น10 อาคารวิศววัฒนะ', '0872341321', '');
 
 -- --------------------------------------------------------
 
@@ -169,10 +237,20 @@ CREATE TABLE `staffdetail` (
 --
 
 CREATE TABLE `storedetail` (
-  `StoreID` varchar(5) NOT NULL,
+  `StoreID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `NumberLocker` int(5) NOT NULL,
-  `Place` varchar(30) CHARACTER SET utf8 NOT NULL
+  `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `storedetail`
+--
+
+INSERT INTO `storedetail` (`StoreID`, `NumberLocker`, `Place`) VALUES
+('001', 101, 'ชั้น11 อาคารวิศววัฒนะ'),
+('002', 102, 'ชั้น11 อาคารวิศววัฒนะ'),
+('003', 103, 'ชั้น11 อาคารวิศววัฒนะ'),
+('004', 104, 'ชั้น11 อาคารวิศววัฒนะ');
 
 -- --------------------------------------------------------
 
@@ -181,8 +259,24 @@ CREATE TABLE `storedetail` (
 --
 
 CREATE TABLE `typeitem` (
-  `TypeItem` varchar(30) CHARACTER SET utf8 NOT NULL
+  `TypeItem` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `typeitem`
+--
+
+INSERT INTO `typeitem` (`TypeItem`) VALUES
+('กระเป๋าตังค์'),
+('กระเป๋าทั่วไป'),
+('กุญแจ'),
+('สาว'),
+('หนังสือ'),
+('หูฟัง'),
+('เมาส์'),
+('แว่นตา'),
+('โทรศัพท์มือถือ'),
+('โน๊ตบุ๊ค');
 
 --
 -- Indexes for dumped tables
@@ -254,7 +348,36 @@ ALTER TABLE `storedetail`
 --
 ALTER TABLE `typeitem`
   ADD PRIMARY KEY (`TypeItem`);
-COMMIT;
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `confirmdetail`
+--
+ALTER TABLE `confirmdetail`
+  MODIFY `ConfirmNO` int(12) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `founddetail`
+--
+ALTER TABLE `founddetail`
+  MODIFY `ItemID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `lostdetail`
+--
+ALTER TABLE `lostdetail`
+  MODIFY `LostID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `picdetail`
+--
+ALTER TABLE `picdetail`
+  MODIFY `PicID` int(5) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `searchdetail`
+--
+ALTER TABLE `searchdetail`
+  MODIFY `SearchID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
