@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 12:23 PM
+-- Generation Time: Dec 07, 2017 at 12:35 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -90,7 +90,7 @@ CREATE TABLE `founddetail` (
   `ItemID` int(5) NOT NULL,
   `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `StaffTeamID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `StoreID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `StoreID` int(5) NOT NULL,
   `TypeItem` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `DateFound` date NOT NULL,
@@ -220,7 +220,7 @@ INSERT INTO `staffdetail` (`StaffTeamID`, `Position`, `WorkHour`, `Office`, `Off
 --
 
 CREATE TABLE `storedetail` (
-  `StoreID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `StoreID` int(5) NOT NULL,
   `NumberLocker` int(5) NOT NULL,
   `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -274,8 +274,9 @@ ALTER TABLE `department`
 -- Indexes for table `founddetail`
 --
 ALTER TABLE `founddetail`
-  ADD PRIMARY KEY (`ItemID`),
+  ADD PRIMARY KEY (`ItemID`,`StoreID`),
   ADD UNIQUE KEY `UK_founddetail_StaffTeamID` (`StaffTeamID`),
+  ADD UNIQUE KEY `UK_founddetail_StoreID` (`StoreID`),
   ADD KEY `FK_founddetail_storedetail_StoreID` (`StoreID`),
   ADD KEY `FK_founddetail_typeitem_TypeItem` (`TypeItem`),
   ADD KEY `FK_founddetail_place_Place` (`Place`);
@@ -369,6 +370,11 @@ ALTER TABLE `picdetail`
 ALTER TABLE `searchdetail`
   MODIFY `SearchID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 --
+-- AUTO_INCREMENT for table `storedetail`
+--
+ALTER TABLE `storedetail`
+  MODIFY `StoreID` int(5) NOT NULL AUTO_INCREMENT;
+--
 -- Constraints for dumped tables
 --
 
@@ -385,7 +391,6 @@ ALTER TABLE `confirmdetail`
 --
 ALTER TABLE `founddetail`
   ADD CONSTRAINT `FK_founddetail_place_Place` FOREIGN KEY (`Place`) REFERENCES `place` (`Place`),
-  ADD CONSTRAINT `FK_founddetail_storedetail_StoreID` FOREIGN KEY (`StoreID`) REFERENCES `storedetail` (`StoreID`),
   ADD CONSTRAINT `FK_founddetail_typeitem_TypeItem` FOREIGN KEY (`TypeItem`) REFERENCES `typeitem` (`TypeItem`);
 
 --
@@ -427,6 +432,7 @@ ALTER TABLE `staffdetail`
 -- Constraints for table `storedetail`
 --
 ALTER TABLE `storedetail`
+  ADD CONSTRAINT `FK_storedetail_founddetail_StoreID` FOREIGN KEY (`StoreID`) REFERENCES `founddetail` (`StoreID`),
   ADD CONSTRAINT `FK_storedetail_place_Place` FOREIGN KEY (`Place`) REFERENCES `place` (`Place`);
 COMMIT;
 
