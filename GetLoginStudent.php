@@ -29,8 +29,8 @@ $Phone = mysqli_real_escape_string($con,$_POST['Phone']);
 $Facebook = mysqli_real_escape_string($con,$_POST['Facebook']);
 $LineID = mysqli_real_escape_string($con,$_POST['LineID']);
 
-$sql = "INSERT INTO personaldetail (Username,StudentID,FirstName,LastName,Password,DepartmentName,Phone,Facebook,LineID)
-VALUES ('$Username','$StudentID','$FirstName','$LastName','$Password','$DepartmentName','$Phone','$Facebook','$LineID');";
+$sql = "INSERT INTO personaldetail (Username,StudentID,FirstName,LastName,Password,DepartmentName,Phone,Facebook,LineID,StaffTeamID)
+VALUES ('$Username','$StudentID','$FirstName','$LastName','$Password','$DepartmentName','$Phone','$Facebook','$LineID','Nope');";
 
 if(!mysqli_query($con,$sql))
 	{die('Error:'.mysqli_error($con));}
