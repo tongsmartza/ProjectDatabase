@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 10:59 AM
+-- Generation Time: Dec 07, 2017 at 11:08 AM
 -- Server version: 10.1.25-MariaDB
--- PHP Version: 5.6.31
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -99,6 +99,19 @@ CREATE TABLE `founddetail` (
   `Localfile` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `founddetail`
+--
+
+INSERT INTO `founddetail` (`ItemID`, `Username`, `StaffTeamID`, `StoreID`, `TypeItem`, `Place`, `DateFound`, `DateOut`, `StatusItem`, `Localfile`) VALUES
+(1, 'tongsmartza', '717', '3', 'Car', 'CB1', '2017-12-07', '0000-00-00', 'No', ''),
+(2, '', '', NULL, 'MINI', '', '0000-00-00', '0000-00-00', '', NULL),
+(3, 'tongsmartza', '987', '1', 'Ku', 'CB3', '0000-00-00', '0000-00-00', 'No', 'tongbnk.png'),
+(4, 'tongsmartza', '789', '2', 'Vee', 'CPE', '0000-00-00', '0000-00-00', '', 'S__21274636.jpg'),
+(5, 'nakis', '789', '2', 'See', 'CPE', '0000-00-00', '0000-00-00', '', ''),
+(6, 'nakis', '789', '2', 'Car', 'CPE', '0000-00-00', '0000-00-00', '', ''),
+(7, 'nakis', '8', '22', 'Cat', 'CB9', '0000-00-00', '0000-00-00', '', 'IMG_1740.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -114,6 +127,19 @@ CREATE TABLE `lostdetail` (
   `Detail` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `Localfile` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lostdetail`
+--
+
+INSERT INTO `lostdetail` (`LostID`, `Username`, `TypeItem`, `Place`, `DateLost`, `Detail`, `Localfile`) VALUES
+(9, 'SELECT Username FROM personald', 'dsa', 'Pen', '0000-00-00', 'à¹€à¸Šà¹ˆà¸™ à¸ªà¸µ à¸£à¸¹à¸›à¸£à¹ˆà¸²à¸‡ à¸¥à¸±à¸à¸©à¸“à¸°à¸­à¸·à¹ˆà¸™à¹†', NULL),
+(10, 'SELECT Username FROM personald', '', '', '0000-00-00', '', NULL),
+(11, 'SELECT Username FROM personald', '', '', '0000-00-00', '', NULL),
+(12, '', 'dsa', 'Pen', '0000-00-00', 'à¹€à¸Šà¹ˆà¸™ à¸ªà¸µ à¸£à¸¹à¸›à¸£à¹ˆà¸²à¸‡ à¸¥à¸±à¸à¸©à¸“à¸°à¸­à¸·à¹ˆà¸™à¹†', NULL),
+(13, '', 'Pen', 'asd', '0000-00-00', 'à¹€à¸Šà¹ˆà¸™ à¸ªà¸µ à¸£à¸¹à¸›à¸£à¹ˆà¸²à¸‡ à¸¥à¸±à¸à¸©à¸“à¸°à¸­à¸·à¹ˆà¸™à¹†', NULL),
+(14, '', 'Pen', 'Pen', '0000-00-00', 'ABC', NULL),
+(15, '', 'Pen', 'Pen', '0000-00-00', 'ABC', NULL);
 
 -- --------------------------------------------------------
 
@@ -202,7 +228,17 @@ CREATE TABLE `searchdetail` (
 INSERT INTO `searchdetail` (`SearchID`, `Username`, `TypeSearch`, `DateSearch`, `TimeSearch`, `KeywordDetail`) VALUES
 (1, 'peerakit', '&#3650;&#3609;&#3658;&#3605;&#', '0000-00-00 00:00:00', '2017-12-05 17:00:00', '&#3626;&#3637;&#3604;&#3635; '),
 (2, 'peerakit', 'Notebook', '2017-12-06 19:24:49', '2017-12-06 12:24:49', 'black'),
-(4, 'peerakit', 'Notebook', '2017-12-06 21:17:10', '2017-12-06 14:17:10', 'black');
+(4, 'peerakit', 'Notebook', '2017-12-06 21:17:10', '2017-12-06 14:17:10', 'black'),
+(67, 'nakis', '-', '2017-12-07 16:34:59', '2017-12-07 02:34:59', '-'),
+(68, 'tongsmartza', '-', '2017-12-07 16:35:05', '2017-12-07 02:35:05', '-'),
+(69, '-', 'car', '2017-12-07 16:35:13', '2017-12-07 02:35:13', '-'),
+(70, '-', 'cat', '2017-12-07 16:35:17', '2017-12-07 02:35:17', '-'),
+(71, 'tongsmartza', '-', '2017-12-07 16:41:24', '2017-12-07 02:41:24', '-'),
+(72, '-', 'Car', '2017-12-07 16:41:39', '2017-12-07 02:41:39', '-'),
+(73, '-', 'Cat', '2017-12-07 16:41:48', '2017-12-07 02:41:48', '-'),
+(74, '-', 'Cat', '2017-12-07 16:43:21', '2017-12-07 02:43:21', '-'),
+(75, '-', 'Cat', '2017-12-07 16:46:10', '2017-12-07 02:46:10', '-'),
+(76, 'tongsmartza', '-', '2017-12-07 16:46:19', '2017-12-07 02:46:19', '-');
 
 -- --------------------------------------------------------
 
@@ -362,12 +398,12 @@ ALTER TABLE `confirmdetail`
 -- AUTO_INCREMENT for table `founddetail`
 --
 ALTER TABLE `founddetail`
-  MODIFY `ItemID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ItemID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `lostdetail`
 --
 ALTER TABLE `lostdetail`
-  MODIFY `LostID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `LostID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `picdetail`
 --
@@ -377,7 +413,7 @@ ALTER TABLE `picdetail`
 -- AUTO_INCREMENT for table `searchdetail`
 --
 ALTER TABLE `searchdetail`
-  MODIFY `SearchID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `SearchID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
