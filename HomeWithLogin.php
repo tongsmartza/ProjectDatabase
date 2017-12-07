@@ -128,12 +128,12 @@
         </div>
 
 	<div class="topnav">
-        <a href="#">หน้าหลัก</a>
-        <a href="#">ค้นหาของ</a>
-        <a href="#">แจ้งของหาย</a>
-        <a href="#">แจ้งหาเจ้าของ</a>
-        <a href="#">คำถามที่พบบ่อย</a>
-        <a href="#">เกี่ยวกับเรา</a>
+        <a href="HomeWithLogin.php">หน้าหลัก</a>
+        <a href="search.html">ค้นหาของ</a>
+        <a href="Findform.php">แจ้งของหาย</a>
+        <a href="Foundform.php">แจ้งหาเจ้าของ</a>
+        <a href="Q&AWithLogin.php">คำถามที่พบบ่อย</a>
+        <a href="AboutUsWithLogin.php">เกี่ยวกับเรา</a>
     </div>
 </head>
 <body>
