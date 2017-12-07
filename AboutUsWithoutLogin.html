@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<style type="text/css">
+
+    body {
+                background-color: #f1f1f1;
+                margin: 0;
+            }
+	* {
+   			    box-sizing: border-box;
+		    }
+			/* Style the header */
+	.header {
+                background-color: #f1f1f1;
+                padding: 20px;
+                text-align: center;
+			}
+
+			/* Style the top navigation bar */
+	.topnav {
+				position: -webkit-sticky;
+			  	position: sticky;
+			  	top: 0;
+    			overflow: hidden;
+    			background-color: #333;
+			}
+
+            /* Style the topnav links */
+    .topnav a {
+                float: left;
+                display: block;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            /* Change color on hover */
+    .topnav a:hover {
+    			
+                background-color: #ddd;
+                color: black;
+            }
+	
+
+	.column {
+                float: left;
+                padding: 10px;
+            }
+
+    .column.left {
+                width: 10%;
+            }
+
+    /* Middle column */
+    .column.right {
+                width: 90%;
+            }
+
+    /* Clear floats after the columns */
+    .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+     /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media (max-width:600px) {
+        .column {
+                    width: 100%;
+                }       
+            }
+	/* The Modal (background) */
+    .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+    /* Modal Content */
+    .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+    .modal2 {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+    /* Modal Content */
+    .modal-content2 {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 30%;
+            }
+    /* The Close Button */
+    .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+    .close:hover,
+    .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+    .close2 {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+    .close2:hover,
+    .close2:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    .modal-content2 p {
+                text-align: center;
+                font-family: verdana;
+                font-size: 50px;
+    }
+    .modal-content2 form {
+                text-align: center;
+                font-family: verdana;
+                font-size: 25px;
+    }
+    .welcome {
+                text-align: center;
+                font-family: verdana;
+                font-size: 30px;
+    }
+    .column.right p{
+                
+                font-family: verdana;
+                font-size: 20px;
+            }
+
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<div class="header">
+  		<h1>Find My Lost</h1>
+	</div>
+
+	<div class="topnav">
+        <a href="HomeWithoutLogin.html">หน้าหลัก</a>
+        <a id="myBtn1">ค้นหาของ</a>
+        <a id="myBtn2">แจ้งของหาย</a>
+        <a id="myBtn3">แจ้งหาเจ้าของ</a>
+        <a href="Q&AWithoutLogin.html">คำถามที่พบบ่อย</a>
+        <a href="AboutUsWithoutLogin.html">เกี่ยวกับเรา</a>
+        <topnav style="float:right"><a href="RegisterFormforStudent.html">สมัครสมาชิก</a>
+        <topnav style="float:right"><a id="myBtn4">เข้าสู่ระบบ</a>
+    </div>
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>คุณจำเป็นต้องเข้าสู่ระบบก่อนทำรายการดังกล่าว</p>
+  </div>
+
+</div>
+
+<div id="myModal2" class="modal2">
+
+  <!-- Modal content -->
+  <div class="modal-content2">
+    <span2 class="close2">&times;</span2>
+    <p>ลงชื่อเข้าใช้</p>
+        <form action="lab6.php" method="post">
+                ชื่อผู้ใช้<br>
+                <input type="text" name="Username" placeholder ="Username">
+                <br>
+                รหัสผ่าน<br>
+                <input type="password" name="Password" placeholder ="Password">
+                <br><br>
+                <input type="submit" value="เข้าสู่ระบบ">
+        </form>
+  </div>
+
+</div>
+
+</head>
+<body>
+    <div class="welcome">
+        
+            <h1>เกี่ยวกับเรา</h1>
+
+    </div>
+    
+
+    <div class="row">
+  <div class="column left ">
+
+  </div>
+    <div class="column right ">
+        <p>ในปีพ.ศ.2560 กลุ่มผู้พัฒนา ได้เห็นถึงปัญหาการทำของหาย หรือพบเจอของที่ไม่มีเจ้าของเป็นประจำ โดยที่สิ่งของเหล่านั้นเป็นของสำคัญอย่างมาก ดังนั้นกลุ่มของเราจึงสร้างระบบ Find my lostขึ้น ซึ่งเป็นระบบที่จะเปิดในนักศึกษา และบุคลากร ของมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี สามารถแจ้งพบของหาย หรือตามหาของหายได้ โดยมีลักษณะการใช้งานได้แก่</p><br>
+        <p>- ตามหาของหาย ผู้ใช้สามารถแจ้งสิ่งของที่ตนเองทาหายไปในระบบได้ ระบบจะทาการเก็บข้อมูลเป็นหมวดหมู่ และเมื่อมีผู้แจ้งพบของหาย ผู้ดูแลระบบจะทาการติดต่อไปยังผู้ที่ตามหา เพื่อมาตรวจสอบ และรับของคืน</p>
+        <p>- แจ้งพบของหาย ผู้ใช้สามารถแจ้งสิ่งของที่พบเจอไปในระบบได้ ระบบจะทำการเก็บข้อมูลเป็นหมวดหมู่ และแสดงผลให้ผู้ที่ตามหาของหาย สามารถเข้ามาค้นหาได้ เมื่อผู้ตามหาของหายพบสิ่งของของตนเอง สามารถแจ้งเข้ามาในระบบ เพื่อตรวจสอบ และติดต่อรับคืนได้</p>        
+        <p>- ระบบค้นหา ผู้ใช้สามารถค้นหาสิ่งของที่ตนเองทาหายได้ โดยในการค้นหา จะสามารถค้นหาแยกเป็นหมวดหมู่ต่างๆ เช่น หมวดหมู่สิ่งของ หมวดหมู่สถานที่ที่พบของ เป็นต้น</p>
+        <p>- ระบบจัดการสมาชิก ผู้ใช้ที่ต้องการใช้งานระบบ Find my lost จะต้องทาการสมัครสมาชิก เพื่อเก็บเป็นฐานข้อมูลของผู้ใช้ทั้งหมด ผู้ใช้สามารถตามหา แจ้ง หรือยืนยันของหายได้ โดยข้อมูลผู้ใช้ จะเป็นรูปแบบเดียวกันทั้งหมด เพื่อความง่ายในการใช้งาน และเพื่อระบุตัวตนของผู้ใช้</p>
+        <p>- ระบบยืนยันของหาย กรณีผู้ใช้งานที่ตามหาของหาย ตรวจพบสิ่งของของตนเองจากผู้ที่แจ้งพบของหายไว้ในระบบ ผู้ใช้งานสามารถยืนยันตนเองในการรับของได้ เพื่อเก็บข้อมูลในการรับของคืนว่าผู้ใช้คนใดมารับของกลับไป</p><br>
+        <p>ติดต่อเจ้าหน้าที่ขององค์กร</p>
+        <pre><p>ต้อง   087 - 521 - 2861       พี   082 - 321 - 7122
+นากีส 080 - 084 - 9820       บีบี 095 - 554 - 0868 </p></pre>
+  </div>
+   
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+    var modal2 = document.getElementById('myModal2');
+    // Get the button that opens the modal
+    var btn1 = document.getElementById("myBtn1");
+    var btn2 = document.getElementById("myBtn2");
+    var btn3 = document.getElementById("myBtn3");
+    var btn4 = document.getElementById("myBtn4");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    var span2 = document.getElementsByClassName("close2")[0];
+
+    // When the user clicks the button, open the modal 
+    btn1.onclick = function() {
+        modal.style.display = "block";
+    }
+     btn2.onclick = function() {
+        modal.style.display = "block";
+    }
+     btn3.onclick = function() {
+        modal.style.display = "block";
+    }
+     btn4.onclick = function() {
+        modal2.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    span2.onclick = function() {
+        modal2.style.display = "none";
+    }
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html> 
