@@ -1,6 +1,8 @@
 
 <html>
 <head>  
+
+
     <title>Result</title>
     <style>
     h1 {
@@ -33,14 +35,17 @@ if($con->connect_error){
     }else{
         $sql="select * from founddetail where (TypeItem like '%$search_type%') OR (Username like '%$search_user%')";
 
+
         $res=$con->query($sql);
 
         while($row=$res->fetch_assoc()){
         ?>    
 
         <br><br> <?php echo '' .$row["TypeItem"]; ?> <br>
-        <?php echo '' .$row["Username"]; ?> 
+        <?php echo '' .$row["Username"]; ?>  
+        <img src ="<?php echo '' .$row["Localfile"]; ?> " alt="Icon" style="width:128px;height:128px">
 
+        
 
         <?php    }       
 
