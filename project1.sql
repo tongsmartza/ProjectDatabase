@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 12:35 PM
+-- Generation Time: Dec 07, 2017 at 12:37 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -96,7 +96,8 @@ CREATE TABLE `founddetail` (
   `DateFound` date NOT NULL,
   `DateOut` date DEFAULT NULL,
   `StatusItem` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Localfile` varchar(255) DEFAULT NULL
+  `Localfile` varchar(255) DEFAULT NULL,
+  `KeywordDetail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
