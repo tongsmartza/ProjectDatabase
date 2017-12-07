@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 12:37 PM
+-- Generation Time: Dec 07, 2017 at 05:00 PM
 -- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,10 +32,17 @@ CREATE TABLE `confirmdetail` (
   `ConfirmNO` int(12) NOT NULL,
   `LostID` int(5) NOT NULL,
   `DateConfirm` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Place` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ItemID` int(5) NOT NULL,
-  `StatusConfirm` varchar(2) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `StatusConfirm` varchar(2) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `confirmdetail`
+--
+
+INSERT INTO `confirmdetail` (`ConfirmNO`, `LostID`, `DateConfirm`, `Place`, `ItemID`, `StatusConfirm`) VALUES
+(1, 17, '2017-12-07 22:39:58', 'ชั้น10 อาคารวิศววัฒนะ', 9, 'Y');
 
 -- --------------------------------------------------------
 
@@ -88,17 +95,27 @@ INSERT INTO `department` (`DepartmentName`, `Facalty`) VALUES
 
 CREATE TABLE `founddetail` (
   `ItemID` int(5) NOT NULL,
-  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `StaffTeamID` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `StaffTeamID` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `StoreID` int(5) NOT NULL,
-  `TypeItem` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `TypeItem` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Place` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `DateFound` date NOT NULL,
   `DateOut` date DEFAULT NULL,
-  `StatusItem` varchar(11) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `Localfile` varchar(255) DEFAULT NULL,
+  `StatusItem` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Localfile` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
   `KeywordDetail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `founddetail`
+--
+
+INSERT INTO `founddetail` (`ItemID`, `Username`, `StaffTeamID`, `StoreID`, `TypeItem`, `Place`, `DateFound`, `DateOut`, `StatusItem`, `Localfile`, `KeywordDetail`) VALUES
+(8, 'peerakit', '002', 1, 'กระเป๋าตังค์', 'ชั้น10 อาคารวิศววัฒนะ', '2017-12-06', NULL, 'อยู่ในล๊อคเกอร์', NULL, 'สีดำหนัง'),
+(9, 'NongYao', '0001', 2, 'เมาส์', 'ชั้น10 อาคารวิศววัฒนะ', '2017-12-04', '2017-12-07', 'คืนเจ้าของแล้ว Fair', NULL, NULL),
+(12, 'นาว', '0002', 3, 'สาว', 'ชั้น11 อาคารวิศววัฒนะ', '2017-12-05', NULL, 'อยู่กับผู้พบเห็นยังไม่ได้จัดเก็บ', NULL, 'ท่วม ชอบหลงแถวอนุฯ'),
+(14, 'boy', '0003', 4, 'กุญแจ', 'ชั้น10 อาคารวิศววัฒนะ', '2017-12-06', NULL, 'อยู่กับผู้พบเห็น', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -115,6 +132,14 @@ CREATE TABLE `lostdetail` (
   `Detail` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `Localfile` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lostdetail`
+--
+
+INSERT INTO `lostdetail` (`LostID`, `Username`, `TypeItem`, `Place`, `DateLost`, `Detail`, `Localfile`) VALUES
+(16, 'peerakit2009', 'สาว', 'ชั้น10 อาคารวิศววัฒนะ', '2017-12-07', 'ช่วยด้วยโสดมานานแล้วTT', NULL),
+(17, 'Fair', 'เมาส์', 'ชั้น10 อาคารวิศววัฒนะ', '2017-12-04', 'สีขาว ลายคิตตี้', NULL);
 
 -- --------------------------------------------------------
 
@@ -138,6 +163,17 @@ CREATE TABLE `personaldetail` (
   `Localfile` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `personaldetail`
+--
+
+INSERT INTO `personaldetail` (`Status`, `EmployeeID`, `StudentID`, `Firstname`, `Lastname`, `Phone`, `Facebook`, `LineID`, `Password`, `DepartmentName`, `StaffTeamID`, `Username`, `Localfile`) VALUES
+('L', NULL, '58070501050', 'Fair', 'com', '080000000', 'Fairy007', NULL, 'Fair', 'วิศวกรรมคอมพิวเตอร์', '002', 'Fair', NULL),
+('S', '10000000000', NULL, 'Nongyao', 'Yaoyao', '0823121231', NULL, NULL, 'cpe', 'วิศวกรรมคอมพิวเตอร์', '003', 'NongYao', NULL),
+('S', NULL, '58070501046', 'พีรกิตติ์', 'บุญกิตติพร', '0823217122', 'พีรกิตติ์ บุญกิตติพร', 'peerakit2009', 'peer@kit2009', 'วิศวกรรมคอมพิวเตอร์', '002', 'peerakit2009', NULL),
+('S', NULL, '58070501069', 'ศิรพงศ์', 'ภู่สวรรค์', ' 0875212861', 'sirapong', 'Tongza007', 'cpe', 'วิศวกรรมคอมพิวเตอร์', '001', 'sirapong', NULL),
+('F', NULL, '58070501006', 'กานต์ตะวัน', 'อุดมลักษณ์โสภิณ', ' 0955540868', 'ฺฺBB', NULL, 'BBwon', 'คณิตศาสตร์', '004', 'ฺฺBB', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -147,10 +183,20 @@ CREATE TABLE `personaldetail` (
 CREATE TABLE `picdetail` (
   `PicID` int(5) NOT NULL,
   `Localfile` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `ItemID` int(5) NOT NULL,
-  `LostID` int(5) NOT NULL
+  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ItemID` int(5) DEFAULT NULL,
+  `LostID` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `picdetail`
+--
+
+INSERT INTO `picdetail` (`PicID`, `Localfile`, `Username`, `ItemID`, `LostID`) VALUES
+(2, 'S__21274636.jpg', 'sirapong', NULL, NULL),
+(3, 'IMG_1740.jpg', NULL, 8, NULL),
+(4, 'tongbnk.png', 'peerakit2009', NULL, NULL),
+(5, 'pee.jpg', NULL, NULL, 16);
 
 -- --------------------------------------------------------
 
@@ -180,12 +226,19 @@ INSERT INTO `place` (`Place`, `Worktime`) VALUES
 
 CREATE TABLE `searchdetail` (
   `SearchID` int(5) NOT NULL,
-  `Username` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `TypeSearch` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `TypeSearch` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `DateSearch` datetime DEFAULT CURRENT_TIMESTAMP,
   `TimeSearch` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `KeywordDetail` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `KeywordDetail` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `searchdetail`
+--
+
+INSERT INTO `searchdetail` (`SearchID`, `Username`, `TypeSearch`, `DateSearch`, `TimeSearch`, `KeywordDetail`) VALUES
+(1, 'Fair', 'เมาส์', '2017-12-05 00:00:00', '2017-12-04 17:00:00', 'คิตตี้');
 
 -- --------------------------------------------------------
 
@@ -225,6 +278,16 @@ CREATE TABLE `storedetail` (
   `NumberLocker` int(5) NOT NULL,
   `Place` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `storedetail`
+--
+
+INSERT INTO `storedetail` (`StoreID`, `NumberLocker`, `Place`) VALUES
+(1, 101, 'ชั้น11 อาคารวิศววัฒนะ'),
+(2, 102, 'ชั้น11 อาคารวิศววัฒนะ'),
+(3, 103, 'ชั้น11 อาคารวิศววัฒนะ'),
+(4, 104, 'ชั้น11 อาคารวิศววัฒนะ');
 
 -- --------------------------------------------------------
 
@@ -349,32 +412,32 @@ ALTER TABLE `typeitem`
 -- AUTO_INCREMENT for table `confirmdetail`
 --
 ALTER TABLE `confirmdetail`
-  MODIFY `ConfirmNO` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `ConfirmNO` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `founddetail`
 --
 ALTER TABLE `founddetail`
-  MODIFY `ItemID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ItemID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `lostdetail`
 --
 ALTER TABLE `lostdetail`
-  MODIFY `LostID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `LostID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `picdetail`
 --
 ALTER TABLE `picdetail`
-  MODIFY `PicID` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `PicID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `searchdetail`
 --
 ALTER TABLE `searchdetail`
-  MODIFY `SearchID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `SearchID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `storedetail`
 --
 ALTER TABLE `storedetail`
-  MODIFY `StoreID` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `StoreID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
