@@ -1,69 +1,59 @@
-<html><body>
-Welcome <?php echo $_POST["Username"]; ?><br>
-Your Search is: <?php echo $_POST["TypeSearch"]; ?><br>
 
-Your KeywordDetail is: <?php echo $_POST["KeywordDetail"]; ?><br>
-<script>
-		loadPapers();
-
-		function loadPapers() {
-			var xmlhttp = new XMLHttpRequest();
-			var url = "http://localhost/fetchsearch.php";
-
-			xmlhttp.onreadystatechange = function() {
-				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-					displayResponse(xmlhttp.responseText);
-				}
-			}
-			xmlhttp.open("GET",url,true);
-			xmlhttp.send();
-		}
-
-		function displayResponse(response) {
-			var array = JSON.parse(response);
-			var i;
-			var out ="<table>";
-			for(i=0;i<array.length;i++) {
-				out += 	"<tr><td>" + array[i].LostID
-					+	"</td><td>" + array[i].Username
-					+	"</td><td>" + array[i].TypeItem
-					+	"</td><td>" + array[i].Place
-					+	"</td><td>" + array[i].DateLost
-					+	"</td><td>" + array[i].Detail
-
-
-					+	"</td></tr>";
-
-			}
-			out += "</table>";
-			document.getElementById("id01").innerHTML = out;
-		}
-
-		
-		</script>
-
-</body></html>
-
-
+<html>
+<head>  
+    <title>Result</title>
+    <style>
+    h1 {
+        border-bottom: 3px solid #cc9900;
+        color: #996600;
+        font-size: 30px;
+    }
+    table, th , td {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+    table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+    
+</style>
+</head>
 <?php
-$con=mysqli_connect ("localhost","root","","project1");
-// Check connection
-if (mysqli_connect_errno()) {
-echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-// escape variables for security
+$search_type=$_POST["TypeItem"];
+$search_user=$_POST["Username"];
+$keyword=$POST["KeywordDetail"];
 
-$Username= mysqli_real_escape_string($con, $_POST['Username']);
-$TypeSearch= mysqli_real_escape_string($con, $_POST['TypeSearch']);
-$KeywordDetail = mysqli_real_escape_string($con, $_POST['KeywordDetail']);
+$con=new mysqli("localhost","root","","project1");
+if($con->connect_error){
+    echo 'Connection Faild: '.$con->connect_error;
+    }else{
+        $sql="select * from founddetail where (TypeItem like '%$search_type%') OR (Username like '%$search_user%')";
 
-$sql="INSERT INTO searchdetail (Username, TypeSearch, KeywordDetail)
-VALUES ('$Username', '$TypeSearch', '$KeywordDetail')";
-if (!mysqli_query($con,$sql)) {
-die('Error: ' . mysqli_error($con));
-}
-echo "1 record added";
-mysqli_close($con);
+        $res=$con->query($sql);
+
+        while($row=$res->fetch_assoc()){
+        ?>    
+
+        <br><br> <?php echo '' .$row["TypeItem"]; ?> <br>
+        <?php echo '' .$row["Username"]; ?> 
+
+
+        <?php    }       
+
+        }
 ?>
 
+<?php
+$insearch="INSERT INTO searchdetail (Username, TypeSearch, KeywordDetail)
+VALUES ('$search_user', '$search_type', '$keyword')";
 
+if (!mysqli_query($con,$insearch)) {
+die('Error: ' . mysqli_error($con));
+}
+#echo "1 record added";
+mysqli_close($con);
+?>
