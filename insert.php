@@ -27,7 +27,7 @@
 <?php
 $search_type=$_POST["TypeItem"];
 $search_user=$_POST["Username"];
-$keyword=$POST["KeywordDetail"];
+$keyword=$_POST["KeywordDetail"];
 
 $con=new mysqli("localhost","root","","project1");
 if($con->connect_error){
