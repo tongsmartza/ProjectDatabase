@@ -158,26 +158,6 @@ img {
                 background-color: #ddd;
                 color: black;
             }
-    h1 
-            {
-                border-bottom: 3px solid #cc9900;
-                color: #996600;
-                font-size: 30px;
-            }
-    table, th , td 
-            {
-                border: 1px solid grey;
-                border-collapse: collapse;
-                padding: 5px;
-            }
-    table tr:nth-child(odd) 
-            {
-                background-color: #f1f1f1;
-            }
-    table tr:nth-child(even) 
-            {
-                background-color: #ffffff;
-            }
 </style>
 <head>
     <meta charset="utf-8">
@@ -189,7 +169,7 @@ img {
 
     <div class="dropdown" style="float:right; width: 10%" >
         <!-- <dropdown style="float:right"> -->
-            <button class="dropbtn">Username</button>
+            <button class="dropbtn"><?php echo $_SESSION['Username']; ?></button>
                   <div class="dropdown-content">
                     <b onclick="location.href='MyProfile.php'">ข้อมูลส่วนตัว</b>
                     <b onclick="location.href='#'">ประวัติของ</b>
@@ -198,7 +178,7 @@ img {
         </div>
 
 	<div class="topnav">
-        <a href="HomeWithLogin.html">หน้าหลัก</a>
+        <a href="HomeWithLogin.php">หน้าหลัก</a>
         <a href="#">ค้นหาของ</a>
         <a href="#">แจ้งของหาย</a>
         <a href="#">แจ้งหาเจ้าของ</a>
