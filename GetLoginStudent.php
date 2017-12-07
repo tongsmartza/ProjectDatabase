@@ -28,11 +28,15 @@ $DepartmentName = mysqli_real_escape_string($con,$_POST['DepartmentName']);
 $Phone = mysqli_real_escape_string($con,$_POST['Phone']);
 $Facebook = mysqli_real_escape_string($con,$_POST['Facebook']);
 $LineID = mysqli_real_escape_string($con,$_POST['LineID']);
+$upload = mysqli_real_escape_string($con,$_POST['fileUpload']);
 
-$sql = "INSERT INTO personaldetail (Username,StudentID,FirstName,LastName,Password,DepartmentName,Phone,Facebook,LineID,StaffTeamID)
-VALUES ('$Username','$StudentID','$FirstName','$LastName','$Password','$DepartmentName','$Phone','$Facebook','$LineID','Nope');";
+$sql = "INSERT INTO personaldetail (Username,StudentID,FirstName,LastName,Password,DepartmentName,Phone,Facebook,LineID)
+VALUES ('$Username','$StudentID','$FirstName','$LastName','$Password','$DepartmentName','$Phone','$Facebook','$LineID');";
 
-if(!mysqli_query($con,$sql))
+$sql2 = "INSERT INTO picdetail (Localfile,Username)
+VALUES ('$upload','$Username');";
+
+if(!mysqli_query($con,$sql)&&!mysqli_query($con,$sql2))
 	{die('Error:'.mysqli_error($con));}
 echo "1 record added";
 mysqli_close($con);

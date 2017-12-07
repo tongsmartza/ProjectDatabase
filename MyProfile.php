@@ -3,8 +3,13 @@
     session_start();
     $key = $_SESSION['Username'];
     $result = mysqli_query($conn, "SELECT * FROM personaldetail WHERE Username='$key';");
-
     $data = mysqli_fetch_assoc($result);
+    $result2 = mysqli_query($conn, "SELECT * FROM picdetail WHERE PicID = '".$data['PicID']."';");
+    $data2 =mysqli_fetch_assoc($result2);
+
+    echo '' .$data2['PicID'];
+    //$result2 = mysqli_query($conn, "SELECT * FROM picdetail WHERE PicID =")
+    
     ?>
 <!DOCTYPE html>
 <html>
@@ -83,7 +88,7 @@
                 font-size: 20px;
     }
 
-img {
+    img {
     display: block;
     margin:  auto;
     }
@@ -158,6 +163,26 @@ img {
                 background-color: #ddd;
                 color: black;
             }
+    h1 
+            {
+                border-bottom: 3px solid #cc9900;
+                color: #996600;
+                font-size: 30px;
+            }
+    table, th , td 
+            {
+                border: 1px solid grey;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+    table tr:nth-child(odd) 
+            {
+                background-color: #f1f1f1;
+            }
+    table tr:nth-child(even) 
+            {
+                background-color: #ffffff;
+            }
 </style>
 <head>
     <meta charset="utf-8">
@@ -178,7 +203,7 @@ img {
         </div>
 
 	<div class="topnav">
-        <a href="HomeWithLogin.php">หน้าหลัก</a>
+        <a href="HomeWithLogin.html">หน้าหลัก</a>
         <a href="#">ค้นหาของ</a>
         <a href="#">แจ้งของหาย</a>
         <a href="#">แจ้งหาเจ้าของ</a>
@@ -191,9 +216,9 @@ img {
   <div class="column left welcome">
 
     <h2>Username</h2>
-    <img src="Pic/Nakis.png" alt="Nakis" width="270" height="270">
+    <img src=" <?php echo ''.$data2['Localfile']; ?> " alt="Nakis" width="270" height="270">
     <br>
-    <button class="uplode"><a href ="#">อัพโหลดรูปภาพ</a></button>
+    
   </div>
 
 
